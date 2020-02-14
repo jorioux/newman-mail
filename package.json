@@ -1,0 +1,19 @@
+{
+  "name": "newman-mail",
+  "version": "1.0.0",
+  "description": "Send newman html report by email",
+  "repository": "https://github.com/jorioux/newman-mail.git",
+  "main": "newman-mail.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonathan Rioux",
+  "license": "MIT",
+  "dependencies": {
+    "date-and-time": "^0.12.0",
+    "dotenv": "^8.2.0",
+    "newman": "^4.5.7",
+    "newman-reporter-htmlextra": "^1.11.2",
+    "nodemailer": "^6.4.2"
+  }
+}
