@@ -7,10 +7,10 @@ Copy `.env.template` to `.env` and fill the values.
 
 Usage:
 
-`
+```
 npm install
 node newman-mail.js --env=dev.postman_environment.json
-`
+```
 
 ## Contribute
 
