@@ -8,12 +8,7 @@ Copy `.env.template` to `.env` and fill the values.
 Usage:
 
 `
-node newman-mail.js --env=<envfile_from_postman>
-`
-
-Example:
-
-`
+npm install
 node newman-mail.js --env=dev.postman_environment.json
 `
 

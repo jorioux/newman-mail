@@ -17,7 +17,7 @@ if (args['env'] == null){
 
 const now = new Date()
 const nowString = date.format(now, 'YYYY-MM-DD HH:mm:ss')
-const reportFile = args['env'] + '_' + date.format(now, 'YYYY-MM-DD_HH-mm-ss') + '.html'
+const reportFile = args['env'].split('.')[0] + '_' + date.format(now, 'YYYY-MM-DD_HH-mm-ss') + '.html'
 const envJsonFile = appDir + '/' + args['env']
 
 console.log('Using environment file: ' + envJsonFile)
