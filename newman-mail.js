@@ -2,16 +2,26 @@ const newman     = require('newman')
 const nodemailer = require('nodemailer')
 const date = require('date-and-time')
 const args = require('minimist')(process.argv.slice(2))
-require('dotenv').config()
 
 // Get project root
 var path = require('path');
 var appDir = path.dirname(require.main.filename);
 
+require('dotenv').config({
+  path: appDir + '/.env'
+})
+
 let subject = ''
 
+// Check if --env parameter has been passed
 if (args['env'] == null){
   console.log('Specify --env variable with environment file to use')
+  process.exit()
+}
+
+// Check is .env file has been filled
+if (process.env.COLLECTION_URL == null){
+  console.log('Enter the values in the .env file')
   process.exit()
 }
 
@@ -38,10 +48,11 @@ newman.run({
     }
 }).on('done', function (err, summary) {
 
+  // Generate the email subject
   if(summary.run.failures.length > 0){
-    subject = args['env'] + ' FAILED (' + summary.run.failures.length + ') ' + nowString
+    subject = args['env'].split('.')[0] + ' FAILED (' + summary.run.failures.length + ') ' + nowString
   } else {
-    subject = args['env'] + ' success ' + nowString
+    subject = args['env'].split('.')[0] + ' success ' + nowString
   }
   console.log(subject)
 
@@ -63,11 +74,11 @@ newman.run({
     ]
   };
 
-    transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log(error)
-    } else {
-        console.log('Email sent: ' + info.response)
-    }
-    });
+  transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+      console.log(error)
+  } else {
+      console.log('Email sent: ' + info.response)
+  }
+  });
 })

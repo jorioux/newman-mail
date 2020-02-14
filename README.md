@@ -1,11 +1,11 @@
 # newman-mail
 Setup an a cronjob to receive beautiful newman HTML reports by email.
 
+## Usage
+
 Copy `.env.template` to `.env` and fill the values.
 
-## Run the script
-
-Usage:
+Copy the environment json files from Postman to the newman-mail folder.
 
 ```
 npm install
