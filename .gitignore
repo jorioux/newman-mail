@@ -1,4 +1,5 @@
 *.html
 *.postman_environment.json
+*.postman_collection.json
 node_modules
 .env
