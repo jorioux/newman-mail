@@ -1,4 +1,4 @@
-const newman     = require('newman')
+const newman = require('newman')
 const args = require('minimist')(process.argv.slice(2))
 
 // Get project root
@@ -21,14 +21,7 @@ newman.run({
   collection: process.env.COLLECTION_URL,
   environment: envJsonFile,
   iterationCount: '1',
-  insecure: true,
-  reporters: 'statsd',
-    reporter: {
-      statsd: {
-        destination: 'cqcbou1lvpmon02.staplesams.com',
-        port: '8125',
-      }
-    }
+  insecure: true
 }).on('done', function (err, summary) {
   if (err) { throw err; }
   console.log('collection run complete!')
